@@ -2,7 +2,7 @@ import express from "express";
 import { login, register } from "../controllers/auth";
 import joi from "joi";
 import expressJoiValidation from "express-joi-validation";
-import { verifyToken } from "../middleware/auth";
+import verifyToken from "../middleware/auth";
 
 const router = express.Router();
 
