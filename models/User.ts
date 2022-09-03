@@ -7,7 +7,7 @@ export interface IUser extends mongoose.Document {
   friends: string[];
 }
 
-const UserSchema = new mongoose.Schema({
+const UserSchema = new Schema({
   username: {
     type: String,
     unique: true,

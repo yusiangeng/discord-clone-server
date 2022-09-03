@@ -23,15 +23,13 @@ export const addNewConnectedUser = ({
   userId: string;
 }) => {
   connectedUsers.set(socketId, { userId });
-  console.log("New connected users:");
-  console.log(connectedUsers);
+  console.log("Connected users:", connectedUsers);
 };
 
 export const removeConnectedUser = (socketId: SocketId) => {
   if (connectedUsers.has(socketId)) {
     connectedUsers.delete(socketId);
-    console.log("New connected users:");
-    console.log(connectedUsers);
+    console.log("Connected users:", connectedUsers);
   }
 };
 

@@ -2,6 +2,8 @@ import { Server as HttpServer } from "http";
 import { Server } from "socket.io";
 import { verifyTokenSocket } from "./middleware/authSocket";
 import { getOnlineUsers, setSocketServerInstance } from "./serverStore";
+import { directChatHistoryHandler } from "./socketHandlers/directChatHistoryHandler";
+import { directMessageHandler } from "./socketHandlers/directMessageHandler";
 import { disconnectHandler } from "./socketHandlers/disconnectHandler";
 import { newConnectionHandler } from "./socketHandlers/newConnectionHandler";
 
@@ -42,11 +44,18 @@ export const registerSocketServer = (httpServer: HttpServer) => {
   };
 
   io.on("connection", (socket) => {
-    console.log("user connected");
-    console.log(socket.id);
+    console.log("User connected: ", socket.id);
 
     newConnectionHandler(socket, io);
     emitOnlineUsers();
+
+    socket.on("direct-message", (data) => {
+      directMessageHandler(socket, data);
+    });
+
+    socket.on("direct-chat-history", (data) => {
+      directChatHistoryHandler(socket, data);
+    });
 
     socket.on("disconnect", () => {
       disconnectHandler(socket);

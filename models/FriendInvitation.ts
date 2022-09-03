@@ -5,7 +5,7 @@ export interface IFriendInvitation extends mongoose.Document {
   receiverId: string;
 }
 
-const FriendInvitationSchema = new mongoose.Schema({
+const FriendInvitationSchema = new Schema({
   senderId: {
     type: Schema.Types.ObjectId,
     ref: "User",
