@@ -1,7 +1,7 @@
-import { IUserSocket } from "../middleware/authSocket";
-import Conversation from "../models/Conversation";
-import Message from "../models/Message";
-import { updateChatHistory } from "./updates/chat";
+import { IUserSocket } from "../../middleware/authSocket";
+import Conversation from "../../models/Conversation";
+import Message from "../../models/Message";
+import { updateChatHistory } from "../updates/chat";
 
 export const directMessageHandler = async (
   socket: IUserSocket,
