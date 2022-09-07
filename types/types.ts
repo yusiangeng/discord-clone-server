@@ -12,3 +12,8 @@ export interface ActiveRoom {
   roomCreator: OnlineUser;
   participants: OnlineUser[];
 }
+
+export interface SignalData {
+  signal: any;
+  connUserSocketId: string;
+}

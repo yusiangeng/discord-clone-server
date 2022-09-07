@@ -4,6 +4,7 @@ import {
   updateFriends,
   updateFriendsPendingInvitations,
 } from "./updates/friends";
+import { updateRooms } from "./updates/rooms";
 
 export const newConnectionHandler = async (socket: IUserSocket) => {
   addNewConnectedUser({
@@ -13,4 +14,8 @@ export const newConnectionHandler = async (socket: IUserSocket) => {
 
   updateFriendsPendingInvitations(socket.user!.id);
   updateFriends(socket.user!.id);
+
+  setTimeout(() => {
+    updateRooms(socket.id);
+  }, 500);
 };

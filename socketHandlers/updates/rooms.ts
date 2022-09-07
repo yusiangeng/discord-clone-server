@@ -3,7 +3,6 @@ import { SocketId } from "../../types/types";
 
 /**
  * Emits event sending active rooms
- *
  * @param socketId if null, will emit to all users
  */
 export const updateRooms = (socketId?: SocketId) => {
